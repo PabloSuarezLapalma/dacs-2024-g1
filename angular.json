@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "C:/xampp/htdocs/dactest",
+            "outputPath": "C:/xampp/htdocs/dacs2024",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
