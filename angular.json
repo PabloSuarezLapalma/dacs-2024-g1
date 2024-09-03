@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dacs-2024-g1": {
+    "dacs": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -11,11 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "C:/xampp/htdocs/dacs2024",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -28,11 +28,11 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "allowedCommonJsDependencies": [
+              "keycloak-js",
+              "base64-js",
+              "js-sha256"
+            ]
           },
           "configurations": {
             "production": {
@@ -48,12 +48,42 @@
                   "maximumError": "4kb"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.production.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "localhost": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.localhost.ts"
+                }
+              ],
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -62,10 +92,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dacs-2024-g1:build:production"
+              "browserTarget": "dacs:build:production"
             },
             "development": {
-              "buildTarget": "dacs-2024-g1:build:development"
+              "browserTarget": "dacs:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +103,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "dacs-2024-g1:build"
+            "browserTarget": "dacs:build"
           }
         },
         "test": {
@@ -98,6 +128,6 @@
     }
   },
   "cli": {
-    "analytics": "68a9e1ab-8ae8-4bb8-8142-ed2acadd4982"
+    "analytics": "596e4282-2683-4db7-9f8c-1d1a2093627d"
   }
 }
