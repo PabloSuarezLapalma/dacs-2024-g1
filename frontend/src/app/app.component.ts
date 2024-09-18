@@ -21,22 +21,14 @@ export class AppComponent implements OnInit {
 
   public async ngOnInit() {
 
-    try{
-
     //Comentar para quitar keycloak
     this.isLogueado = await this.keycloak.isLoggedIn();
     this.role=await this.keycloak.isUserInRole("ROLE-A");
 
 
-    this.apiService.getTest().subscribe(resp => {this.testResponse= resp},error => {
-      console.error('Error fetching testResponse:', error);
-    });
-    this.apiService.getPing().subscribe(resp => {this.apiPing= resp},error => {
-      console.error('Error fetching apiPing:', error);
-    });
-    this.apiService.getConectorPing().subscribe(resp => {this.apiConectorPing= resp},error => {
-      console.error('Error fetching apiConectorPing:', error);
-    });
+    this.apiService.getTest().subscribe(resp => {this.testResponse= resp});
+    this.apiService.getPing().subscribe(resp => {this.apiPing= resp});
+    this.apiService.getConectorPing().subscribe(resp => {this.apiConectorPing= resp});
     console.log ("role=====>", this.role );
     if(this.isLogueado && !this.role){
       this.keycloak.logout();
@@ -47,9 +39,6 @@ export class AppComponent implements OnInit {
     if (this.isLogueado) {
       this.perfilUsuario = await this.keycloak.loadUserProfile();
     }
-  }catch (error) {
-    console.error('Error during initialization:', error);
-  }
   }
 
   public iniciarSesion() {
