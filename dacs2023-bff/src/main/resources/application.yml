@@ -4,20 +4,20 @@ spring:
       client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/dacs 
+            issuer-uri: http://localhost:8080/realms/dacs-2024-g1
         registration:
           keycloak-login:
             authorization-grant-type: authorization_code
-            client-id: dacs2023-bff
-            client-secret: qBEkFPUSgKxbT1sLZNJu6BP25yjT5ti0
+            client-id: dacs2024-bff
+            client-secret: 4z5qK6EViwQGw6JTGz2TO9qTzEvVmopj
             provider: keycloak
             scope: openid,profile,email,offline_access
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/dacs
-          jwk-set-uri: ${JWK_URL:http://localhost:8080/realms/dacs/protocol/openid-connect/certs}s
+          issuer-uri: http://localhost:8080/realms/dacs-2024-g1
+          jwk-set-uri: ${JWK_URL:http://localhost:8080/realms/dacs-2024-g1/protocol/openid-connect/certs}s
         jwk:
-          key-set-uri: ${JWK_URL:http://localhost:8080/realms/dacs/protocol/openid-connect/certs}
+          key-set-uri: ${JWK_URL:http://localhost:8080/realms/dacs-2024-g1/protocol/openid-connect/certs}
       aud:
         active: 'false'
         values: 'USUARIORUS,TEST,ANOTHERAUD'
@@ -61,11 +61,11 @@ dacs:
     max-age: 3600
   oauth2:
     service-account:
-      auth: ${IDP_URL:http://localhost:8080/realms/dacs/protocol/openid-connect}
-      client-id: 'dacs2023-bff'
-      secret: 'qBEkFPUSgKxbT1sLZNJu6BP25yjT5ti0'
+      auth: ${IDP_URL:http://localhost:8080/realms/dacs-2024-g1/protocol/openid-connect}
+      client-id: 'dacs2024-bff'
+      secret: '4z5qK6EViwQGw6JTGz2TO9qTzEvVmopj'
       login:
-        url: ${IDP_LOGIN_URL:http://localhost:8080/realms/dacs/protocol/openid-connect}
+        url: ${IDP_LOGIN_URL:http://localhost:8080/realms/dacs-2024-g1/protocol/openid-connect}
         client-id: ${IDP_CLIENT_ID:dacs2023-fe}
   
 server:
