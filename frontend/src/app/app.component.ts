@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   public testResponse : ITestResponse  | null = null;
   public apiPing = "";
   public apiConectorPing = "";
+  public apiBackendPing = "";
   public perfilUsuario: KeycloakProfile | null = null;
   public role = false;
   constructor(private readonly keycloak: KeycloakService,private apiService: ApiService) {}
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
     this.apiService.getTest().subscribe(resp => {this.testResponse= resp});
     this.apiService.getPing().subscribe(resp => {this.apiPing= resp});
     this.apiService.getConectorPing().subscribe(resp => {this.apiConectorPing= resp});
+    this.apiService.getBackendPing().subscribe(resp => {this.apiBackendPing= resp});
     console.log ("role=====>", this.role );
     if(this.isLogueado && !this.role){
       this.keycloak.logout();

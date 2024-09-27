@@ -29,6 +29,14 @@ export class ApiService {
             .get(url, { responseType: 'text' })
             .pipe();
     }
+    
+    getBackendPing() {
+        const url = `${environment.backendForFrontendUrl}/backend/ping`;
+        return this.http
+            .get(url, { responseType: 'text' })
+            .pipe();
+    }
+
 
     getTest() {
         const url ='assets/json/test.json';

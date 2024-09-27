@@ -61,3 +61,12 @@
 	  </tr>
 	</table>
 </ng-container>
+<ng-container *ngIf="apiConectorPing">
+	<h2>PING A BACKEND</h2>
+	<table>
+	  <tr *ngIf="apiBackendPing">
+		<th scope="row">Response</th>
+		<td>{{ apiBackendPing }}</td>
+	  </tr>
+	</table>
+</ng-container>
