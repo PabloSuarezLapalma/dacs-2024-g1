@@ -9,7 +9,7 @@ spring:
           keycloak-login:
             authorization-grant-type: authorization_code
             client-id: dacs2024-bff
-            client-secret: 29PMyy1E9FFEEDm6rjqk1v2qM2EwcGPZ
+            client-secret: 4z5qK6EViwQGw6JTGz2TO9qTzEvVmopj
             provider: keycloak
             scope: openid,profile,email,offline_access
       resourceserver:
@@ -63,7 +63,7 @@ dacs:
     service-account:
       auth: ${IDP_URL:http://localhost:8080/realms/dacs-2024-g1/protocol/openid-connect}
       client-id: 'dacs2024-bff'
-      secret: '29PMyy1E9FFEEDm6rjqk1v2qM2EwcGPZ'
+      secret: '4z5qK6EViwQGw6JTGz2TO9qTzEvVmopj'
       login:
         url: ${IDP_LOGIN_URL:http://localhost:8080/realms/dacs-2024-g1/protocol/openid-connect}
         client-id: ${IDP_CLIENT_ID:dacs2023-fe}
