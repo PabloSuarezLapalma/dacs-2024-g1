@@ -7,15 +7,19 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializeKeycloak } from './core/init/keycloak-init.factory';
 import { ApiService } from './core/services/apiservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DailyViewComponent } from './components/daily-view/daily-view.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DailyViewComponent
   ],
   imports: [
     BrowserModule,
     KeycloakAngularModule,
     AppRoutingModule,
-    HttpClientModule  
+    HttpClientModule,
+    BrowserAnimationsModule  
   ],
   providers: [
     //Comentar el provider para no usar keycloak
