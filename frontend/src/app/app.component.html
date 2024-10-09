@@ -1,3 +1,6 @@
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="!isRouteActive('/daily-view')">
 <h1>Mi Aplicación Angular {{title}} con Keycloak</h1>
 
 		<button *ngIf="isLogueado" type="button" (click)="cerrarSesion()">Cerrar Session</button>
@@ -69,4 +72,5 @@
 		<td>{{ apiBackendPing }}</td>
 	  </tr>
 	</table>
+</ng-container>
 </ng-container>

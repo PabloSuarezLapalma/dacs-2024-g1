@@ -9,6 +9,8 @@ import { ApiService } from './core/services/apiservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DailyViewComponent } from './components/daily-view/daily-view.component';
+import { MatTableModule } from '@angular/material/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,8 @@ import { DailyViewComponent } from './components/daily-view/daily-view.component
     KeycloakAngularModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule  
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [
     //Comentar el provider para no usar keycloak

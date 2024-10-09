@@ -3,6 +3,7 @@ import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 import { ApiService } from './core/services/apiservice.service';
 import { ITestResponse } from './core/models/response.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
   public apiBackendPing = "";
   public perfilUsuario: KeycloakProfile | null = null;
   public role = false;
-  constructor(private readonly keycloak: KeycloakService,private apiService: ApiService) {}
+  constructor(private readonly keycloak: KeycloakService, private apiService: ApiService, private router: Router) {}
 
   public async ngOnInit() {
 
@@ -49,5 +50,8 @@ export class AppComponent implements OnInit {
 
   public cerrarSesion() {
     this.keycloak.logout();
+  }
+  isRouteActive(route: string): boolean {
+    return this.router.url === route;
   }
 }
