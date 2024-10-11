@@ -5,9 +5,9 @@ import { DailyViewComponent } from './components/daily-view/daily-view.component
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/daily-view', pathMatch: 'full' },
+  { path: '', component: DailyViewComponent, canActivate: [AuthGuard] },
   { path: 'daily-view', component: DailyViewComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/daily-view' }
+  { path: '**', redirectTo: '/' }
 ];
 
 
@@ -16,3 +16,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [DailyViewComponent];
