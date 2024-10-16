@@ -1,31 +1,60 @@
-<h1>DAILY VIEW</h1>
+<div class="user-info">
+  <p>Usuario: {{ userName }}</p>
+</div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<h1 class="title">Vista Diaria</h1>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
+<div class="main-container">
+  <div class="sidebar">
+    <h2>Materias Inscritas</h2>
+    <ul>
+      <li *ngFor="let materia of materias" [matTooltip]="getTooltip(materia)">
+        {{ materia.name }} ({{ materia.number }})
+      </li>
+    </ul>
+  </div>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  </ng-container>
+      <!-- Time Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
+      <!-- Monday Column -->
+      <ng-container matColumnDef="monday">
+        <th mat-header-cell *matHeaderCellDef> Monday </th>
+        <td mat-cell *matCellDef="let element"> {{element.monday}} </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+      <!-- Tuesday Column -->
+      <ng-container matColumnDef="tuesday">
+        <th mat-header-cell *matHeaderCellDef> Tuesday </th>
+        <td mat-cell *matCellDef="let element"> {{element.tuesday}} </td>
+      </ng-container>
+
+      <!-- Wednesday Column -->
+      <ng-container matColumnDef="wednesday">
+        <th mat-header-cell *matHeaderCellDef> Wednesday </th>
+        <td mat-cell *matCellDef="let element"> {{element.wednesday}} </td>
+      </ng-container>
+
+      <!-- Thursday Column -->
+      <ng-container matColumnDef="thursday">
+        <th mat-header-cell *matHeaderCellDef> Thursday </th>
+        <td mat-cell *matCellDef="let element"> {{element.thursday}} </td>
+      </ng-container>
+
+      <!-- Friday Column -->
+      <ng-container matColumnDef="friday">
+        <th mat-header-cell *matHeaderCellDef> Friday </th>
+        <td mat-cell *matCellDef="let element"> {{element.friday}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

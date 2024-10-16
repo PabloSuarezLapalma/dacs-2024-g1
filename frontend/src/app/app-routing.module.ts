@@ -3,15 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guard/auth.guard';
 import { DailyViewComponent } from './components/daily-view/daily-view.component';
 
-
 const routes: Routes = [
-  { path: '', component: DailyViewComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'daily-view', pathMatch: 'full' },
   { path: 'daily-view', component: DailyViewComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: 'daily-view' }
 ];
 
-
-@NgModule({ 
+@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
